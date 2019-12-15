@@ -1,26 +1,4 @@
-/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
- http://www.cocos2d-x.org
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
+
 
 
 #include "SimpleAudioEngine.h"
@@ -36,7 +14,7 @@ bool ifBook = false;
 bool ifExpensive = false;
 short int breed_item = 0;
 short int strength_times = 1;
-//1±íÊ¾´óÁ¦Ë®,2±íÊ¾Õ¨µ¯,3±íÊ¾×êÊ¯ÉıÖµË®,4±íÊ¾Ê¯Í·ÊÕ²ØÊé
+//1è¡¨ç¤ºå¤§åŠ›æ°´,2è¡¨ç¤ºç‚¸å¼¹,3è¡¨ç¤ºé’»çŸ³å‡å€¼æ°´,4è¡¨ç¤ºçŸ³å¤´æ”¶è—ä¹¦
 Label* label_tips;
 Scene* _Shop::createScene()
 {
@@ -174,23 +152,23 @@ bool _Shop::init()
 	
     
 	
-	//¼ÓÈëÇĞ»»³¡¾°µÄLabel
+	//åŠ å…¥åˆ‡æ¢åœºæ™¯çš„Label
 	auto label_buy = Label::createWithSystemFont("Buy", "fonts/arial.ttf", 40);
 	auto menuitem_buy = MenuItemLabel::create(label_buy,
 		CC_CALLBACK_1(_Shop::Buy, this));
 	auto menu_start_buy = Menu::create(menuitem_buy, NULL);
-	//°Ñ²Ëµ¥Ìí¼Óµ½MyFirstScene²ãÖĞ
+	//æŠŠèœå•æ·»åŠ åˆ°MyFirstSceneå±‚ä¸­
 	menu_start_buy->setPosition(Vec2(600, 100));
 	this->addChild(menu_start_buy, 1);
 	label_buy->setTextColor(Color4B(0, 0, 0, 255));
 
-	auto label_next = Label::createWithSystemFont("Next", "fonts/arial.ttf", 40);//´´½¨Ò»¸ö±êÇ©																							  //²Ëµ¥ÌõÄ¿µÄ´´½¨ÓĞ¶àÖÖ£¬Ö®Ç°µÄHelloWorld.cppÖĞÊµÏÖµÄÊÇÍ¼Æ¬²Ëµ¥ÌõÄ¿(MenuItemImage)£¬¼´¸ù¾İÍ¼Æ¬À´´´½¨²Ëµ¥ÌõÄ¿
-																			 //ÕâÀïÊÇ¸ù¾İ±êÇ©À´´´½¨²Ëµ¥ÌõÄ¿,È»ºóÉèÖÃ»Øµ÷º¯Êı
+	auto label_next = Label::createWithSystemFont("Next", "fonts/arial.ttf", 40);//åˆ›å»ºä¸€ä¸ªæ ‡ç­¾																							  //èœå•æ¡ç›®çš„åˆ›å»ºæœ‰å¤šç§ï¼Œä¹‹å‰çš„HelloWorld.cppä¸­å®ç°çš„æ˜¯å›¾ç‰‡èœå•æ¡ç›®(MenuItemImage)ï¼Œå³æ ¹æ®å›¾ç‰‡æ¥åˆ›å»ºèœå•æ¡ç›®
+																			 //è¿™é‡Œæ˜¯æ ¹æ®æ ‡ç­¾æ¥åˆ›å»ºèœå•æ¡ç›®,ç„¶åè®¾ç½®å›è°ƒå‡½æ•°
 	auto menuitem_next = MenuItemLabel::create(label_next,
 		CC_CALLBACK_1(_Shop::EnterSecondScene, this));
-	//´´½¨ºÃÁË²Ëµ¥ÌõÄ¿£¬¾ÍĞèÒª¼ÓÈë²Ëµ¥ÖĞ£¬ËùÒÔÏÂÃæ¾ÍÊÇ´´½¨²Ëµ¥
+	//åˆ›å»ºå¥½äº†èœå•æ¡ç›®ï¼Œå°±éœ€è¦åŠ å…¥èœå•ä¸­ï¼Œæ‰€ä»¥ä¸‹é¢å°±æ˜¯åˆ›å»ºèœå•
 	auto menu_start_next = Menu::create(menuitem_next, NULL);
-	//°Ñ²Ëµ¥Ìí¼Óµ½MyFirstScene²ãÖĞ
+	//æŠŠèœå•æ·»åŠ åˆ°MyFirstSceneå±‚ä¸­
 	menu_start_next->setPosition(Vec2(600,200));
 	this->addChild(menu_start_next, 1);
 	label_next->setTextColor(Color4B(0, 0, 0, 255));
@@ -231,9 +209,9 @@ void _Shop::Buy(Ref* pSender)
 {
 	if (breed_item == 1)
 	{
-		std::istringstream is(socre); //¹¹ÔìÊäÈë×Ö·û´®Á÷£¬Á÷µÄÄÚÈİ³õÊ¼»¯Îª¡°12¡±µÄ×Ö·û´® 
+		std::istringstream is(socre); //æ„é€ è¾“å…¥å­—ç¬¦ä¸²æµï¼Œæµçš„å†…å®¹åˆå§‹åŒ–ä¸ºâ€œ12â€çš„å­—ç¬¦ä¸² 
 		int i;
-		is >> i; //´ÓisÁ÷ÖĞ¶ÁÈëÒ»¸öintÕûÊı´æÈëiÖĞ
+		is >> i; //ä»isæµä¸­è¯»å…¥ä¸€ä¸ªintæ•´æ•°å­˜å…¥iä¸­
 		if (i >= 300)
 		{
 			ifStrength = true;
@@ -244,16 +222,16 @@ void _Shop::Buy(Ref* pSender)
 		{
 			;
 		}
-		std::ostringstream os; //¹¹ÔìÒ»¸öÊä³ö×Ö·û´®Á÷£¬Á÷ÄÚÈİÎª¿Õ 
-		os << i; //ÏòÊä³ö×Ö·û´®Á÷ÖĞÊä³öintÕûÊıiµÄÄÚÈİ 
+		std::ostringstream os; //æ„é€ ä¸€ä¸ªè¾“å‡ºå­—ç¬¦ä¸²æµï¼Œæµå†…å®¹ä¸ºç©º 
+		os << i; //å‘è¾“å‡ºå­—ç¬¦ä¸²æµä¸­è¾“å‡ºintæ•´æ•°içš„å†…å®¹ 
 		socre = os.str();
 	}
 	else
 		if (breed_item == 2)
 		{
-			std::istringstream is(socre); //¹¹ÔìÊäÈë×Ö·û´®Á÷£¬Á÷µÄÄÚÈİ³õÊ¼»¯Îª¡°12¡±µÄ×Ö·û´® 
+			std::istringstream is(socre); //æ„é€ è¾“å…¥å­—ç¬¦ä¸²æµï¼Œæµçš„å†…å®¹åˆå§‹åŒ–ä¸ºâ€œ12â€çš„å­—ç¬¦ä¸² 
 			int i;
-			is >> i; //´ÓisÁ÷ÖĞ¶ÁÈëÒ»¸öintÕûÊı´æÈëiÖĞ
+			is >> i; //ä»isæµä¸­è¯»å…¥ä¸€ä¸ªintæ•´æ•°å­˜å…¥iä¸­
 			if (i >= 250)
 			{
 				bomb_number++;
@@ -263,16 +241,16 @@ void _Shop::Buy(Ref* pSender)
 			{
 				;
 			}
-			std::ostringstream os; //¹¹ÔìÒ»¸öÊä³ö×Ö·û´®Á÷£¬Á÷ÄÚÈİÎª¿Õ 
-			os << i; //ÏòÊä³ö×Ö·û´®Á÷ÖĞÊä³öintÕûÊıiµÄÄÚÈİ 
+			std::ostringstream os; //æ„é€ ä¸€ä¸ªè¾“å‡ºå­—ç¬¦ä¸²æµï¼Œæµå†…å®¹ä¸ºç©º 
+			os << i; //å‘è¾“å‡ºå­—ç¬¦ä¸²æµä¸­è¾“å‡ºintæ•´æ•°içš„å†…å®¹ 
 			socre = os.str();
 		}
 		else
 			if (breed_item == 3)
 			{
-				std::istringstream is(socre); //¹¹ÔìÊäÈë×Ö·û´®Á÷£¬Á÷µÄÄÚÈİ³õÊ¼»¯Îª¡°12¡±µÄ×Ö·û´® 
+				std::istringstream is(socre); //æ„é€ è¾“å…¥å­—ç¬¦ä¸²æµï¼Œæµçš„å†…å®¹åˆå§‹åŒ–ä¸ºâ€œ12â€çš„å­—ç¬¦ä¸² 
 				int i;
-				is >> i; //´ÓisÁ÷ÖĞ¶ÁÈëÒ»¸öintÕûÊı´æÈëiÖĞ
+				is >> i; //ä»isæµä¸­è¯»å…¥ä¸€ä¸ªintæ•´æ•°å­˜å…¥iä¸­
 				if (i >= 400)
 				{
 					ifExpensive = true;
@@ -283,16 +261,16 @@ void _Shop::Buy(Ref* pSender)
 				{
 					;
 				}
-				std::ostringstream os; //¹¹ÔìÒ»¸öÊä³ö×Ö·û´®Á÷£¬Á÷ÄÚÈİÎª¿Õ 
-				os << i; //ÏòÊä³ö×Ö·û´®Á÷ÖĞÊä³öintÕûÊıiµÄÄÚÈİ 
+				std::ostringstream os; //æ„é€ ä¸€ä¸ªè¾“å‡ºå­—ç¬¦ä¸²æµï¼Œæµå†…å®¹ä¸ºç©º 
+				os << i; //å‘è¾“å‡ºå­—ç¬¦ä¸²æµä¸­è¾“å‡ºintæ•´æ•°içš„å†…å®¹ 
 				socre = os.str();
 			}
 			else
 				if (breed_item == 4)
 				{
-					std::istringstream is(socre); //¹¹ÔìÊäÈë×Ö·û´®Á÷£¬Á÷µÄÄÚÈİ³õÊ¼»¯Îª¡°12¡±µÄ×Ö·û´® 
+					std::istringstream is(socre); //æ„é€ è¾“å…¥å­—ç¬¦ä¸²æµï¼Œæµçš„å†…å®¹åˆå§‹åŒ–ä¸ºâ€œ12â€çš„å­—ç¬¦ä¸² 
 					int i;
-					is >> i; //´ÓisÁ÷ÖĞ¶ÁÈëÒ»¸öintÕûÊı´æÈëiÖĞ
+					is >> i; //ä»isæµä¸­è¯»å…¥ä¸€ä¸ªintæ•´æ•°å­˜å…¥iä¸­
 					if (i >= 100)
 					{
 						ifBook = true;
@@ -302,8 +280,8 @@ void _Shop::Buy(Ref* pSender)
 					{
 						;
 					}
-					std::ostringstream os; //¹¹ÔìÒ»¸öÊä³ö×Ö·û´®Á÷£¬Á÷ÄÚÈİÎª¿Õ 
-					os << i; //ÏòÊä³ö×Ö·û´®Á÷ÖĞÊä³öintÕûÊıiµÄÄÚÈİ 
+					std::ostringstream os; //æ„é€ ä¸€ä¸ªè¾“å‡ºå­—ç¬¦ä¸²æµï¼Œæµå†…å®¹ä¸ºç©º 
+					os << i; //å‘è¾“å‡ºå­—ç¬¦ä¸²æµä¸­è¾“å‡ºintæ•´æ•°içš„å†…å®¹ 
 					socre = os.str();
 				}
 				else
