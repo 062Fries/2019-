@@ -1,26 +1,3 @@
-/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
- http://www.cocos2d-x.org
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
@@ -104,7 +81,7 @@ bool Start::init()
 		// add the sprite as a child to this layer
 	//	this->addChild(txtsprite, 2);
 	//}
-	//¼ÓÈë¿ó¹¤ÈËÎïÍ¼Æ¬
+	//åŠ å…¥çŸ¿å·¥äººç‰©å›¾ç‰‡
 	auto minersprite = Sprite::create("miner.png");
 	if (minersprite == nullptr)
 	{
@@ -118,7 +95,7 @@ bool Start::init()
 		// add the sprite as a child to this layer
 		this->addChild(minersprite, 1);
 	}
-	//¼ÓÈë½ð¿éÍ¼Æ¬
+	//åŠ å…¥é‡‘å—å›¾ç‰‡
 	auto goldsprite = Sprite::create("menugold.png");
 	if (goldsprite == nullptr)
 	{
@@ -133,7 +110,7 @@ bool Start::init()
 		this->addChild(goldsprite, 1);
 	}
 
-    // ¼ÓÈëÖ÷±³¾°
+    // åŠ å…¥ä¸»èƒŒæ™¯
     auto sprite = Sprite::create("mainscene.png");
     if (sprite == nullptr)
     {
@@ -147,7 +124,7 @@ bool Start::init()
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
     }
-	//¼ÓÈë±³¾°
+	//åŠ å…¥èƒŒæ™¯
 	auto skysprite = Sprite::create("mainscenes.png");
 	if (skysprite == nullptr)
 	{
@@ -161,13 +138,13 @@ bool Start::init()
 		// add the sprite as a child to this layer
 		this->addChild(skysprite, 0);
 	}
-	//¼ÓÈëÇÐ»»³¡¾°µÄLabel
-	auto label = Label::createWithSystemFont("START", "fonts/arial.ttf", 50);//´´½¨Ò»¸ö±êÇ©																							  //²Ëµ¥ÌõÄ¿µÄ´´½¨ÓÐ¶àÖÖ£¬Ö®Ç°µÄHelloWorld.cppÖÐÊµÏÖµÄÊÇÍ¼Æ¬²Ëµ¥ÌõÄ¿(MenuItemImage)£¬¼´¸ù¾ÝÍ¼Æ¬À´´´½¨²Ëµ¥ÌõÄ¿
-																								  //ÕâÀïÊÇ¸ù¾Ý±êÇ©À´´´½¨²Ëµ¥ÌõÄ¿,È»ºóÉèÖÃ»Øµ÷º¯Êý
+	//åŠ å…¥åˆ‡æ¢åœºæ™¯çš„Label
+	auto label = Label::createWithSystemFont("START", "fonts/arial.ttf", 50);//åˆ›å»ºä¸€ä¸ªæ ‡ç­¾																							  //èœå•æ¡ç›®çš„åˆ›å»ºæœ‰å¤šç§ï¼Œä¹‹å‰çš„HelloWorld.cppä¸­å®žçŽ°çš„æ˜¯å›¾ç‰‡èœå•æ¡ç›®(MenuItemImage)ï¼Œå³æ ¹æ®å›¾ç‰‡æ¥åˆ›å»ºèœå•æ¡ç›®
+																								  //è¿™é‡Œæ˜¯æ ¹æ®æ ‡ç­¾æ¥åˆ›å»ºèœå•æ¡ç›®,ç„¶åŽè®¾ç½®å›žè°ƒå‡½æ•°
 	auto menuitem = MenuItemLabel::create(label, CC_CALLBACK_1(Start::EnterSecondScene, this));
-	//´´½¨ºÃÁË²Ëµ¥ÌõÄ¿£¬¾ÍÐèÒª¼ÓÈë²Ëµ¥ÖÐ£¬ËùÒÔÏÂÃæ¾ÍÊÇ´´½¨²Ëµ¥
+	//åˆ›å»ºå¥½äº†èœå•æ¡ç›®ï¼Œå°±éœ€è¦åŠ å…¥èœå•ä¸­ï¼Œæ‰€ä»¥ä¸‹é¢å°±æ˜¯åˆ›å»ºèœå•
 	auto menu_start = Menu::create(menuitem, NULL);
-	//°Ñ²Ëµ¥Ìí¼Óµ½MyFirstScene²ãÖÐ
+	//æŠŠèœå•æ·»åŠ åˆ°MyFirstSceneå±‚ä¸­
 	menu_start->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 200));
 	this->addChild(menu_start,1);
 	label->setTextColor(Color4B(0, 0, 0, 255));
